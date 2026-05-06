@@ -1,4 +1,4 @@
-# Tarea-4-componente-pr-ctico-proyecto-de-grado
+# Tarea-4-componente practico-proyecto de grado
 Código de la actividad presentada sobre el proyecto seleccionado y desarrollado 
 
 <!-- 
