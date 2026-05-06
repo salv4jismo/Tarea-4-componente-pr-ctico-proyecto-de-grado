@@ -2,7 +2,7 @@
 Código de la actividad presentada sobre el proyecto seleccionado y desarrollado 
 
 <!-- 
-    EQUIPO DE DESARROLLO - MATHEMA
+    EQUIPO DE DESARROLLO - LogiTrack
     Integrantes:
     - Sergio Andres Aponte 
     - Yohan Sebastian Gaitan
@@ -13,7 +13,7 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mathema - Galería Interactiva</title>
+    <title>LogiTrack - Aplicación de Seguimiento </title>
     <style>
         * {
             margin: 0;
@@ -23,7 +23,7 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -51,15 +51,15 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
         }
 
         .section h2 {
-            color: #667eea;
-            border-bottom: 3px solid #667eea;
+            color: #1e3c72;
+            border-bottom: 3px solid #1e3c72;
             padding-bottom: 10px;
             margin-bottom: 20px;
             font-size: 1.8rem;
         }
 
         .section h3 {
-            color: #764ba2;
+            color: #2a5298;
             margin: 15px 0 10px 0;
             font-size: 1.3rem;
         }
@@ -67,7 +67,7 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
         /* Grid de imágenes */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 20px;
             margin-top: 15px;
         }
@@ -89,7 +89,7 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
 
         .image-preview {
             width: 100%;
-            height: 150px;
+            height: 180px;
             background-color: #e9ecef;
             display: flex;
             align-items: center;
@@ -121,7 +121,7 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
             font-weight: 500;
             color: #495057;
             background: white;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             border-top: 1px solid #e9ecef;
         }
 
@@ -190,8 +190,8 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
             padding: 10px;
             border-radius: 8px;
             text-align: center;
-            margin: 10px 0;
-            font-size: 0.85rem;
+            margin: 10px;
+            font-size: 0.8rem;
         }
 
         /* Mensaje de información */
@@ -222,36 +222,33 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
     </style>
 </head>
 <body>
+ 
     <div class="container">
-        <h1>📚 Mathema - Galería de la Aplicación</h1>
+        <h1>🚛 LogiTrack - Rutas Seguimiento y pymes</h1>
         
         <div class="info-banner">
             💡 <strong>Consejo:</strong> Haz clic en cualquier imagen para verla en tamaño completo. 
-            Asegúrate de que las imágenes estén en una carpeta llamada <strong>"Imagenes"</strong> (con mayúscula inicial).
+            Asegúrate de que las imágenes estén en la carpeta <strong>"Imagenes"</strong> (en el mismo lugar que este archivo HTML).
         </div>
 
         <div class="section">
-            <h2>🔐 Autenticación</h2>
+            <h2>🔐 Autenticación y Dashboard</h2>
             <div class="gallery-grid" id="auth-grid"></div>
         </div>
 
         <div class="section">
-            <h2>📊 Usuario y Progreso</h2>
-            <div class="gallery-grid" id="user-grid"></div>
+            <h2>🚛 Gestión de Flota</h2>
+            <div class="gallery-grid" id="flota-grid"></div>
         </div>
 
         <div class="section">
-            <h2>📚 Módulos de Aprendizaje</h2>
-            <div class="gallery-grid" id="modules-grid"></div>
+            <h2>🗺️ Rutas y Seguimiento</h2>
+            <div class="gallery-grid" id="rutas-grid"></div>
         </div>
 
         <div class="section">
-            <h2>✏️ Ejercicios</h2>
-            <h3>Álgebra</h3>
-            <div class="gallery-grid" id="algebra-grid"></div>
-            
-            <h3>Lógica y Respuestas</h3>
-            <div class="gallery-grid" id="logic-grid"></div>
+            <h2>📊 Reportes</h2>
+            <div class="gallery-grid" id="reportes-grid"></div>
         </div>
     </div>
 
@@ -264,39 +261,28 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
 
     <script>
         // Definición de todas las imágenes con sus rutas y nombres amigables
-        const images = {
-            // Autenticación
-            login: { src: "Imagenes/login.png", alt: "Pantalla de Login", section: "auth", displayName: "🔐 Login" },
-            login2: { src: "Imagenes/login2.png", alt: "Pantalla de Login Alternativa", section: "auth", displayName: "🔐 Login 2" },
-            registro: { src: "Imagenes/registro.png", alt: "Pantalla de Registro", section: "auth", displayName: "📝 Registro" },
-            registroDatos: { src: "Imagenes/registro-datos.png", alt: "Registro de Datos", section: "auth", displayName: "📋 Registro de Datos" },
+        const images = [
+            // Autenticación y Dashboard
+            { src: "Imagenes/login.png", alt: "Pantalla de Login", section: "auth", displayName: "🔐 Login", category: "Autenticación" },
+            { src: "Imagenes/dashboard.png", alt: "Dashboard Principal", section: "auth", displayName: "📊 Dashboard", category: "Dashboard" },
             
-            // Usuario y Progreso
-            dashboard: { src: "Imagenes/dashboard.png", alt: "Dashboard Principal", section: "user", displayName: "📊 Dashboard" },
-            progreso: { src: "Imagenes/progreso.png", alt: "Pantalla de Progreso", section: "user", displayName: "📈 Progreso" },
+            // Gestión de Flota - Vehículos y Conductores
+            { src: "Imagenes/gestion-vehiculo.png", alt: "Gestión de Vehículos", section: "flota", displayName: "🚛 Gestión de Vehículos", category: "Vehículos" },
+            { src: "Imagenes/conductores.png", alt: "Gestión de Conductores", section: "flota", displayName: "👨‍✈️ Conductores", category: "Conductores" },
             
-            // Módulos
-            modulos: { src: "Imagenes/modulos.png", alt: "Módulos Disponibles", section: "modules", displayName: "📚 Módulos" },
-            moduloAlgebra: { src: "Imagenes/modulo-algebra.png", alt: "Módulo de Álgebra", section: "modules", displayName: "🧮 Módulo - Álgebra" },
-            moduloLogica: { src: "Imagenes/modulo-logica.png", alt: "Módulo de Lógica", section: "modules", displayName: "🧠 Módulo - Lógica" },
+            // Rutas y Seguimiento
+            { src: "Imagenes/rutas.png", alt: "Gestión de Rutas", section: "rutas", displayName: "🗺️ Rutas", category: "Rutas" },
+            { src: "Imagenes/seguimiento.png", alt: "Seguimiento de Unidades", section: "rutas", displayName: "📍 Seguimiento", category: "Seguimiento" },
             
-            // Ejercicios Álgebra
-            ejerciciosAlgebra: { src: "Imagenes/ejercicios-algebra.png", alt: "Ejercicios de Álgebra", section: "algebra", displayName: "📝 Ejercicios - Álgebra" },
-            ejerciciosAlgebra2: { src: "Imagenes/ejercicios-algebra2.png", alt: "Ejercicios de Álgebra 2", section: "algebra", displayName: "📝 Ejercicios - Álgebra 2" },
-            
-            // Lógica y Respuestas
-            seleccionRespuesta: { src: "Imagenes/seleccion-respuesta.png", alt: "Selección de Respuesta", section: "logic", displayName: "✅ Selección de Respuesta" },
-            respuestaCorrecta: { src: "Imagenes/respuesta-correcta.png", alt: "Respuesta Correcta", section: "logic", displayName: "✔️ Respuesta Correcta" },
-            respuestaCorrecta2: { src: "Imagenes/respuesta-correcta.png", alt: "Respuesta Correcta", section: "logic", displayName: "✔️ Respuesta Correcta" },
-            respuestaIncorrecta: { src: "Imagenes/respuesta-incorrecta.png", alt: "Respuesta Incorrecta", section: "logic", displayName: "❌ Respuesta Incorrecta" }
-        };
+            // Reportes
+            { src: "Imagenes/reportes.png", alt: "Generación de Reportes", section: "reportes", displayName: "📈 Reportes", category: "Reportes" }
+        ];
 
         // Referencias a los grids
         const authGrid = document.getElementById('auth-grid');
-        const userGrid = document.getElementById('user-grid');
-        const modulesGrid = document.getElementById('modules-grid');
-        const algebraGrid = document.getElementById('algebra-grid');
-        const logicGrid = document.getElementById('logic-grid');
+        const flotaGrid = document.getElementById('flota-grid');
+        const rutasGrid = document.getElementById('rutas-grid');
+        const reportesGrid = document.getElementById('reportes-grid');
 
         // Modal elements
         const modal = document.getElementById('imageModal');
@@ -305,7 +291,7 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
         const closeModal = document.querySelector('.close-modal');
 
         // Función para crear una tarjeta de imagen
-        function createImageCard(imageKey, imageData) {
+        function createImageCard(imageData) {
             const card = document.createElement('div');
             card.className = 'image-card';
             
@@ -323,14 +309,14 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
                 this.style.display = 'none';
                 const errorDiv = document.createElement('div');
                 errorDiv.className = 'error-message';
-                errorDiv.innerHTML = '⚠️ Imagen no encontrada<br><small>Verifica la ruta:<br>' + imageData.src + '</small>';
+                errorDiv.innerHTML = '⚠️ Imagen no encontrada<br><small>' + imageData.src + '</small>';
                 preview.innerHTML = '';
                 preview.appendChild(errorDiv);
                 
-                // También mostrar un placeholder
+                // Placeholder
                 const placeholder = document.createElement('div');
-                placeholder.style.cssText = 'display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #999;';
-                placeholder.innerHTML = '🖼️<br>Imagen faltante';
+                placeholder.style.cssText = 'display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; color: #999; font-size: 40px;';
+                placeholder.innerHTML = '🖼️<br><span style="font-size:12px">' + imageData.displayName + '</span>';
                 preview.appendChild(placeholder);
             };
             
@@ -359,14 +345,12 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
             modalImg.src = src;
             modalCaption.textContent = title;
             
-            // Si la imagen falla al cargar en el modal, mostrar mensaje
             modalImg.onerror = function() {
                 modalCaption.textContent = title + ' (Imagen no encontrada: ' + src + ')';
                 this.style.display = 'none';
-                // Crear un elemento de error visible
                 const errorDisplay = document.createElement('div');
                 errorDisplay.style.cssText = 'color: white; text-align: center; padding: 20px; background: #333; border-radius: 10px;';
-                errorDisplay.innerHTML = '⚠️ No se pudo cargar la imagen<br><small>' + src + '</small><br><br>💡 Sugerencia: Crea una carpeta "Imagenes" y coloca las capturas allí con los nombres correctos.';
+                errorDisplay.innerHTML = '⚠️ No se pudo cargar la imagen<br><small>' + src + '</small>';
                 if (!document.querySelector('.modal-error')) {
                     errorDisplay.className = 'modal-error';
                     modal.appendChild(errorDisplay);
@@ -389,7 +373,7 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
             if (existingError) existingError.remove();
         }
 
-        // Cerrar modal al hacer clic fuera o en la X
+        // Eventos del modal
         closeModal.addEventListener('click', closeModalHandler);
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
@@ -397,109 +381,44 @@ Código de la actividad presentada sobre el proyecto seleccionado y desarrollado
             }
         });
 
-        // Presionar ESC para cerrar
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && modal.classList.contains('active')) {
                 closeModalHandler();
             }
         });
 
-        // Organizar imágenes por sección y mostrarlas
+        // Renderizar la galería
         function renderGallery() {
-            // Limpiar grids
             authGrid.innerHTML = '';
-            userGrid.innerHTML = '';
-            modulesGrid.innerHTML = '';
-            algebraGrid.innerHTML = '';
-            logicGrid.innerHTML = '';
+            flotaGrid.innerHTML = '';
+            rutasGrid.innerHTML = '';
+            reportesGrid.innerHTML = '';
             
-            // Recorrer todas las imágenes y agregarlas a su grid correspondiente
-            Object.entries(images).forEach(([key, img]) => {
-                const card = createImageCard(key, img);
+            images.forEach(img => {
+                const card = createImageCard(img);
                 switch(img.section) {
                     case 'auth':
                         authGrid.appendChild(card);
                         break;
-                    case 'user':
-                        userGrid.appendChild(card);
+                    case 'flota':
+                        flotaGrid.appendChild(card);
                         break;
-                    case 'modules':
-                        modulesGrid.appendChild(card);
+                    case 'rutas':
+                        rutasGrid.appendChild(card);
                         break;
-                    case 'algebra':
-                        algebraGrid.appendChild(card);
+                    case 'reportes':
+                        reportesGrid.appendChild(card);
                         break;
-                    case 'logic':
-                        logicGrid.appendChild(card);
-                        break;
-                    default:
-                        // Si no tiene sección definida, va a autenticación por defecto
-                        authGrid.appendChild(card);
                 }
             });
-            
-            // Mostrar mensajes informativos si algunos grids están vacíos
-            checkEmptyGrids();
         }
         
-        function checkEmptyGrids() {
-            const grids = [
-                { element: authGrid, name: "Autenticación", path: "Imagenes/login.png" },
-                { element: userGrid, name: "Usuario y Progreso", path: "Imagenes/dashboard.png" },
-                { element: modulesGrid, name: "Módulos", path: "Imagenes/modulos.png" },
-                { element: algebraGrid, name: "Ejercicios de Álgebra", path: "Imagenes/ejercicios-algebra.png" },
-                { element: logicGrid, name: "Lógica y Respuestas", path: "Imagenes/seleccion-respuesta.png" }
-            ];
-            
-            // No agregamos mensajes adicionales porque ya se maneja con los errors en cada tarjeta
-        }
-        
-        // También podemos agregar una función para verificar si la carpeta Imagenes existe
-        function checkImagesFolder() {
-            console.log("📂 Verificando carpeta de imágenes...");
-            console.log("ℹ️ Las imágenes deben estar en la carpeta: Imagenes/");
-            console.log("📋 Nombres esperados:");
-            Object.values(images).forEach(img => {
-                console.log("   - " + img.src);
-            });
-        }
-        
-        // Inicializar la galería
+        // Inicializar
         renderGallery();
-        checkImagesFolder();
         
-        // Añadir estilos adicionales para el modal
-        const style = document.createElement('style');
-        style.textContent = `
-            .modal {
-                display: none;
-                position: fixed;
-                z-index: 1000;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-                background-color: rgba(0,0,0,0.9);
-                justify-content: center;
-                align-items: center;
-            }
-            .modal.active {
-                display: flex !important;
-            }
-            .modal-content {
-                max-width: 90%;
-                max-height: 90%;
-                object-fit: contain;
-            }
-            .modal-error {
-                background: #721c24;
-                color: white;
-                padding: 20px;
-                border-radius: 10px;
-                text-align: center;
-            }
-        `;
-        document.head.appendChild(style);
+        console.log("🚛 LogicTrack - Galería iniciada");
+        console.log("📁 Las imágenes deben estar en la carpeta: Imagenes/");
+        console.log("📋 Imágenes esperadas: login.png, dashboard.png, gestion-vehiculo.png, conductores.png, rutas.png, seguimiento.png, reportes.png");
     </script>
 </body>
 </html>
